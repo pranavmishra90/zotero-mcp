@@ -90,3 +90,92 @@ sentence-transformers v5.2.0
 (*) Package tree already displayed
 
 ```
+
+
+## Solution (Work in Progress)
+
+Add pytorch directly to the `pyproject.toml` dependencies, with the following source constraints:
+
+```toml
+dependencies = [
+    "pyzotero>=1.5.0",
+    "mcp>=1.2.0",
+    "python-dotenv>=1.0.0",
+    "markitdown[pdf]",
+    "pydantic>=2.0.0",
+    "requests>=2.28.0",
+    "fastmcp>=2.14.0",
+    "chromadb>=0.4.0",
+    "torch>=2.9.0", # <-- Added line
+    "sentence-transformers>=2.2.0",
+    "openai>=1.0.0",
+    "google-genai>=0.7.0",
+]
+
+## Added section ------------------------------
+[tool.uv.sources]
+torch = [
+  { index = "pytorch-cpu" },
+]
+torchvision = [
+  { index = "pytorch-cpu" },
+]
+
+[[tool.uv.index]]
+name = "pytorch-cpu"
+url = "https://download.pytorch.org/whl/cpu"
+explicit = true
+## -------------------------------------------
+
+```
+
+
+```bash
+sentence-transformers v5.2.0
+├── huggingface-hub v0.36.0
+│   ├── filelock v3.20.1
+│   ├── fsspec v2025.12.0
+│   ├── hf-xet v1.2.0
+│   ├── packaging v25.0
+│   ├── pyyaml v6.0.3
+│   ├── requests v2.32.5
+│   │   ├── certifi v2025.11.12
+│   │   ├── charset-normalizer v3.4.4
+│   │   ├── idna v3.11
+│   │   └── urllib3 v2.3.0
+│   ├── tqdm v4.67.1
+│   └── typing-extensions v4.15.0
+├── scikit-learn v1.8.0
+│   ├── joblib v1.5.3
+│   ├── numpy v2.4.0
+│   ├── scipy v1.16.3
+│   │   └── numpy v2.4.0
+│   └── threadpoolctl v3.6.0
+├── scipy v1.16.3 (*)
+├── torch v2.9.1+cpu
+│   ├── filelock v3.20.1
+│   ├── fsspec v2025.12.0
+│   ├── jinja2 v3.1.6
+│   │   └── markupsafe v3.0.3
+│   ├── networkx v3.6.1
+│   ├── setuptools v80.9.0
+│   ├── sympy v1.14.0
+│   │   └── mpmath v1.3.0
+│   └── typing-extensions v4.15.0
+├── tqdm v4.67.1
+├── transformers v4.57.3
+│   ├── filelock v3.20.1
+│   ├── huggingface-hub v0.36.0 (*)
+│   ├── numpy v2.4.0
+│   ├── packaging v25.0
+│   ├── pyyaml v6.0.3
+│   ├── regex v2025.11.3
+│   ├── requests v2.32.5 (*)
+│   ├── safetensors v0.7.0
+│   ├── tokenizers v0.22.1
+│   │   └── huggingface-hub v0.36.0 (*)
+│   └── tqdm v4.67.1
+└── typing-extensions v4.15.0
+(*) Package tree already displayed
+
+```
