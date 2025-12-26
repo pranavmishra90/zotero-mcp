@@ -58,24 +58,24 @@
 #### Installing via uv
 
 ```bash
-uv tool install "git+https://github.com/54yyyu/zotero-mcp.git"
+uv tool install "git+https://github.com/pranavmishra90/zotero-mcp.git"
 zotero-mcp setup  # Auto-configure (Claude Desktop supported)
 ```
 
 #### Installing via pip
 
 ```bash
-pip install git+https://github.com/54yyyu/zotero-mcp.git
+pip install git+https://github.com/pranavmishra90/zotero-mcp.git
 zotero-mcp setup  # Auto-configure (Claude Desktop supported)
 ```
-
+<!-- 
 ### Installing via Smithery
 
 To install Zotero MCP via [Smithery](https://smithery.ai/server/@54yyyu/zotero-mcp) for Claude Desktop:
 
 ```bash
 npx -y @smithery/cli install @54yyyu/zotero-mcp --client claude
-```
+``` -->
 
 #### Updating Your Installation
 
@@ -180,6 +180,24 @@ After installation, either:
      }
    }
    ```
+
+3. VSCode MCP Configuration:
+  Add to your `.vscode/mcp.json`:
+  ```json
+  {
+    "servers": {
+      "zotero": {
+        "command": "zotero-mcp",
+        "env": {
+          "ZOTERO_LOCAL": "true",
+          "ZOTERO_LIBRARY_TYPE": "user"
+        }
+      }
+    }
+  }
+  ```
+  An example can be seen in the `.vscode/mcp.json` file in this repository.
+
 
 #### Usage
 
